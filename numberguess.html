@@ -1,0 +1,98 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازی حدس عداد</title>
+    <style>
+        .gameArea {
+            margin: auto;
+            position: relative;
+        }
+
+        .number {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+    <a href="index.html">بازگشت</a>
+    <div style="text-align: center;margin: auto;width: 50%;">
+        <div class="message"></div>
+        <div class="gameArea" style="width: 300px;border:2px solid ;"></div>
+        <button>شروع</button>
+    </div>
+</body>
+<script>
+    const gameArea = document.querySelector('.gameArea');
+    const btn = document.querySelector('button');
+    var message = document.querySelector('.message');
+    var score = 0;
+    let GamePlay = false;
+    btn.addEventListener('click', function () {
+        if (!GamePlay) {
+            GamePlay = true;
+            gameArea.innerHTML = "";
+            gameArea.style.display = 'block';
+            message.style.display = 'none';
+            maker(6);
+            btn.innerText = 'چک جواب';
+        } else {
+            // console.log('چک پاسخ کاربر');
+            score++;
+            var winCondition = 0;
+            message.style.display = 'block';
+            message.innerText = 'تعداد' + score + 'حدس';
+            const numbers = document.querySelectorAll('.number');
+            for (let i = 0; i < numbers.length; i++) {
+                // console.log(numbers[i].correct);
+                // console.log(numbers[i].value);
+                if (numbers[i].value == numbers[i].correct) {
+                    // console.log('Match');
+                    numbers[i].style.backgroundColor = 'green';
+                    winCondition++;
+                } else {
+                    // console.log('No Match');
+                    let color = (numbers[i].value < numbers[i].correct) ? 'blue' : 'red';
+                    numbers[i].style.backgroundColor = color;
+                    numbers[i].style.color = 'black';
+
+                }
+                if (winCondition == numbers.length) {
+                    console.log('پایان بازی');
+                    endGame();
+
+
+                }
+            }
+        }
+    });
+    function endGame() {
+        gameArea.style.display = 'none';
+        message.innerText = 'با تعداد' + score + ' حدس برنده شدید!';
+        btn.innerText = 'شروع';
+        GamePlay = false;
+        score = 0;
+    }
+    function maker(n) {
+
+        for (let i = 0; i < n; i++) {
+            let el = document.createElement('input');
+            el.type = "number";
+            el.style.width = "50px";
+            el.classList = "number";
+            el.max = 9;
+            el.min = 0;
+            el.correct = Math.floor(Math.random() * 10);
+            el.value = 0;
+            el.size = 1;
+            el.order = i;
+            // console.log(el);
+            gameArea.appendChild(el);
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازی حدس واژه</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+    <a href="index.html">بازگشت</a>
+    <div style="text-align: center;border: 1px solid;width: 50%;margin: auto;">
+        <p></p>
+        <button>شروع</button>
+        <input type="text">
+        <ul></ul>
+    </div> 
+
+</body>
+<SCRIpt>
+    let arrWords = ['ملینا', 'پولاد', 'مریم', 'ملیکا', 'فائقه', 'پریسا', 'ژاله', 'گرگین', 'چمن'];
+    let inPlay = false;
+    var message = document.querySelector('p');
+    var btn = document.querySelector('button');
+    var input = document.querySelector('input');
+    var guestList = document.querySelector('ul');
+    var answer = "";
+    var guess = 1;
+    message.innerText = 'به بازی حدس کلمه خوش آمدید.';
+    input.classList.toggle("hidden");
+    btn.addEventListener('click', function () {
+        if (!inPlay) {
+            console.log('بازی شروع شد.');
+            guestList.innerText = "";
+            input.classList.toggle("hidden");
+            answer = randomArraySelector(arrWords);
+            console.log(answer);
+            let question = hashAnswer(answer);
+            message.innerHTML = '<h1/>' + question;
+            btn.innerText = 'چک پاسخ';
+            console.log(question);
+            inPlay = true;
+
+
+        } else {
+            console.log('چک پاسخ');
+            console.log(input.value + '=' + answer);
+            FguestList(input.value);
+            if (input.value == answer) {
+                console.log(input.value);
+                message.innerText = "شما با " + guess + 'حدس  کلمه:' + answer + ' رایافتید.';
+                input.classList.toggle("hidden");
+                reset();
+            } else {
+                guess++;
+            }
+        }
+
+    });
+    function FguestList(guest) {
+        let node = document.createElement('li');
+        let textnode = document.createTextNode(guest);
+        node.appendChild(textnode);
+        guestList.appendChild(node);
+        // return false;
+    }
+    function reset() {
+        input.value = "";
+        btn.innerText = 'شروع';
+        guess = 1;
+        inPlay = false;
+
+    }
+    function randomArraySelector(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+    function hashAnswer(answer) {
+        answer = answer.split("");
+        console.log(answer);
+        for (let j = answer.length - 1; j > 0; j--) {
+            let temp = answer[j];
+            let i = Math.floor(Math.random() * (j + 1));
+            answer[j] = answer[i];
+            answer[i] = temp;
+        }
+        return (answer);
+
+    }
+
+
+</SCRIpt>
+
+</html>
