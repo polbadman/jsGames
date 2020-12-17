@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماشین حساب ساده</title>
+    <style>
+        @font-face {
+            font-family: 'myFirstFont';
+            src: url("http://nobat.medsab.ac.ir/center-theme/center/fonts/iransans/eot/IRANSansWeb(FaNum).eot");
+        }
+
+        form {
+            text-align: center;
+            margin: auto;
+            width: 100%;
+            position: relative;
+            display: block ruby;
+            font-family: 'myFirstFont';
+        }
+
+        .skin {
+
+            background-color: aquamarine;
+            padding: 5px;
+            width: 213px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            width: 50px;
+        }
+
+        #input {
+            width: 212px;
+            height: 40;
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html">بازگشت</a>
+    <form name="calculator" class="calculator">
+        <div class="skin">
+            <input type="text" name="input" id="input"><br><br>
+            <input type="button" value="1" onclick="calculator.input.value+=1" class="btn">
+            <input type="button" value="2" onclick="calculator.input.value+=2" class="btn">
+            <input type="button" value="3" onclick="calculator.input.value+=3" class="btn">
+            <input type="button" value="+" onclick="calculator.input.value+='+'" class="btn">
+            <br>
+            <input type="button" value="4" onclick="calculator.input.value+=4" class="btn">
+            <input type="button" value="5" onclick="calculator.input.value+=5" class="btn">
+            <input type="button" value="6" onclick="calculator.input.value+=6" class="btn">
+            <input type="button" value="-" onclick="calculator.input.value+='-'" class="btn">
+            <br>
+            <input type="button" value="7" onclick="calculator.input.value+=7" class="btn">
+            <input type="button" value="8" onclick="calculator.input.value+=8" class="btn">
+            <input type="button" value="9" onclick="calculator.input.value+=9" class="btn">
+            <input type="button" value="*" onclick="calculator.input.value+='*'" class="btn">
+            <br>
+            <input type="button" value="پاکن" onclick="calculator.input.value=''" class="btn">
+            <input type="button" value="0" onclick="calculator.input.value+=0" class="btn">
+            <input type="button" value="=" onclick="calculator.input.value=eval(calculator.input.value)" class="btn">
+            <input type="button" value="/" onclick="calculator.input.value+='/'" class="btn">
+        </div>
+    </form>
+</body>
+
+</html>

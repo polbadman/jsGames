@@ -18,7 +18,7 @@
         <button>شروع</button>
         <input type="text">
         <ul></ul>
-    </div> 
+    </div>
 
 </body>
 <SCRIpt>
@@ -44,23 +44,33 @@
             btn.innerText = 'چک پاسخ';
             console.log(question);
             inPlay = true;
+            input.addEventListener('keypress', enterclick);
 
 
         } else {
             console.log('چک پاسخ');
             console.log(input.value + '=' + answer);
             FguestList(input.value);
-            if (input.value == answer) {
-                console.log(input.value);
-                message.innerText = "شما با " + guess + 'حدس  کلمه:' + answer + ' رایافتید.';
-                input.classList.toggle("hidden");
-                reset();
-            } else {
-                guess++;
-            }
+            answerCheck();
         }
 
     });
+    function enterclick(event) {
+        if ((input.value.length > 0) && event.which == 13) {
+            FguestList(input.value);
+            answerCheck();
+        }
+    }
+    function answerCheck() {
+        if (input.value == answer) {
+            console.log(input.value);
+            message.innerText = "شما با " + guess + 'حدس  کلمه:' + answer + ' رایافتید.';
+            input.classList.toggle("hidden");
+            reset();
+        } else {
+            guess++;
+        }
+    }
     function FguestList(guest) {
         let node = document.createElement('li');
         let textnode = document.createTextNode(guest);

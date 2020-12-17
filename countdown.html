@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معکوس شمار</title>
+    <style>
+        .main {
+            text-align: center;
+            width: 50%;
+            background: red;
+            margin: auto;
+            position: relative;
+            text-align: center;
+            display: block ruby;
+        }
+
+        .clock {
+            background-color: blue;
+            width: 400px;
+            text-align: center;
+            color: white;
+        }
+
+        .clock>span {
+            padding: 10px;
+            margin: 5px;
+            background-color: black;
+            border-radius: 10px;
+        }
+
+        .clock>span>span {
+            border-radius: 40px;
+            background-color: red;
+            padding: 2px;
+            margin-left: 2px;
+        }
+
+        input {
+            font-size: 2em;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+      <a href="index.html">بازگشت</a>
+    <div class="main">
+        <input type="date" name="endDate">
+        <div class="clock">
+            <span><span class="days">0</span>روز</span>
+            <span><span class="hourse">0</span>ساعت</span>
+            <span><span class="minutes">0</span>دقیقه</span>
+            <span><span class="secounds">0</span>ثانیه</span>
+        </div>
+    </div>
+</body>
+<script src="countdown.js"></script>
+</html>
